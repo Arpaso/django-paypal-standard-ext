@@ -18,7 +18,7 @@ install_requires = [
 ]
 
 #Execute function to handle setuptools functionality
-setup(name="paypal-standard-ext",
+setup(name="django-paypal-standard-ext",
             version="0.1",
             description="Paypal standard payment extension",
             long_description=read('README'),
