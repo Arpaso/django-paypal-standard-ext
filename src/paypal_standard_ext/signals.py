@@ -2,4 +2,4 @@
 """ subscription signals """
 from django.dispatch import Signal
 
-paid = Signal(providing_args=["user", "object", "receipt"])
+paid = Signal(providing_args=["user", "receipt"])

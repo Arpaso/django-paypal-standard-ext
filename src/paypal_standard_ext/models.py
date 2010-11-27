@@ -24,7 +24,6 @@ class Custom(object):
         self.user_pk = user.pk 
         self.object_pk = obj.pk 
         self.content_type = ContentType.objects.get_for_model(obj).natural_key()
-        print "%s | %s | %s" % (self.user_pk, self.object_pk, self.content_type) 
         super(Custom, self).__init__()
         
     def get_object(self):
@@ -48,7 +47,8 @@ class Custom(object):
 def handle_payment_was_successful(sender, **kwargs):
     """Extends object and user objects from PayPal IPN receipt and sends a paid signal"""
     custom = Custom.deserialize(sender.custom)
-    paid.send(user=custom.get_user(), obj = custom.get_object(), receipt=sender)
+    obj = custom.get_object()
+    paid.send(type(obj), user=custom.get_user(), obj = obj, receipt=sender)
 payment_was_successful.connect(handle_payment_was_successful)
 
 #===============================================================================
