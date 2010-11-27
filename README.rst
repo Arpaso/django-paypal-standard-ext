@@ -28,7 +28,7 @@ Paypal's payment_was_successful signal's handler, which sends our 'paid' signal 
 Template tags
 -------------
 
-This package provides one module with template tags: paypal, which has one defined tag: paypal_shortcut.
+This package provides one module with template tags: shortcut, which has one defined tag: paypal_shortcut.
 This tag returns rendered form to buy something.
 
 Example::
@@ -40,3 +40,10 @@ All arguments:
 	- return_url : 'payment_done' by default
 	- cancel_url : 'index' by default
 	- form_class : paypal-standard-ext.forms.PayPalPaymentsForm by default
+
+Settings
+--------
+
+PAYPAL_IMAGE_URL : related url to use as top image on PayPal site. "images/logo.png" by default.
+
+SITE_NAME : PayPal site's merchant button's title. "Shop" by default.
