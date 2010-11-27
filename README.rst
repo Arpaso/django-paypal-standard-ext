@@ -1,6 +1,8 @@
 PayPal Standard Payment Extension.
 ==================================
 
+Use django-paypal branch: (https://github.com/dcramer/django-paypal)
+
 Forms (paypal-standard-ext.forms)
 -----
 
