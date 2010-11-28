@@ -19,12 +19,22 @@ install_requires = [
 
 #Execute function to handle setuptools functionality
 setup(name="django-paypal-standard-ext",
-            version="0.1",
-            description="Paypal standard payment extension",
-            long_description=read('README.rst'),
-            packages=find_packages('src'),
-            package_dir={'': 'src'},
-            include_package_data=True,
-            zip_safe=True,
-            install_requires=install_requires,
+    version="0.1",
+    description="Paypal standard payment extension",
+    long_description=read('README.rst'),
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+    include_package_data=True,
+    zip_safe=True,
+    install_requires=install_requires,
+    author='Arvid Paeglit',
+    author_email='arvid@arpaso.com',
+    url='http://github.com/Arpaso/django-paypal-standard-ext',
+    classifiers=(
+        "Framework :: Django",
+        "Intended Audience :: Developers",
+        "Intended Audience :: System Administrators",
+        "Operating System :: OS Independent",
+        "Topic :: Software Development"
+    ),
 )
