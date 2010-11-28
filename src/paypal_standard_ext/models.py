@@ -14,12 +14,12 @@ from .signals import paid
 
 
 class Custom(object):
-    user_pk = ''
+    user_id = ''
     object_pk = ''
     content_type = ()
     
     def __init__(self, user, obj):
-        self.user_pk = user.pk 
+        self.user_id = user.id 
         self.object_pk = obj.pk 
         self.content_type = ContentType.objects.get_for_model(obj).natural_key()
         super(Custom, self).__init__()
@@ -28,7 +28,8 @@ class Custom(object):
         return ContentType.objects.get_by_natural_key(*self.content_type).get_object_for_this_type(pk=self.object_pk)
     
     def get_user(self):
-        return User.objects.get(pk=self.user_pk)
+        queryset = User.objects.filter(id=self.user_id)
+        return queryset.get() if queryset else None
     
     def serialize(self):
         pickled = pickle.dumps(self, pickle.HIGHEST_PROTOCOL)
