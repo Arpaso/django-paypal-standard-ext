@@ -9,7 +9,7 @@ from native_tags.decorators import function
 from paypal_standard_ext.forms import PayPalPaymentsForm
 from paypal_standard_ext.models import Custom
 
-def paypal_shortcut(request, obj, return_url='payment_done', cancel_url='index', form_class=PayPalPaymentsForm):
+def paypal_shortcut(request, obj, return_url='/', cancel_url='/', form_class=PayPalPaymentsForm):
     if request.user.is_authenticated():
         form = form_class(initial={
             "amount": obj.price,
@@ -25,8 +25,8 @@ def paypal_shortcut(request, obj, return_url='payment_done', cancel_url='index',
             "no_shipping": 1, # No shipping
             
             "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
-            "return_url": request.build_absolute_uri(reverse(return_url)),
-            "cancel_return": request.build_absolute_uri(reverse(cancel_url)),
+            "return_url": request.build_absolute_uri(return_url),
+            "cancel_return": request.build_absolute_uri(cancel_url),
             
             "cbt": getattr(settings, 'SITE_NAME', 'Shop'),
             "image_url": "%s%s" % (settings.MEDIA_URL, getattr(settings, 'PAYPAL_IMAGE_URL', 'images/logo.png'))
