@@ -34,4 +34,6 @@ def paypal_shortcut(request, obj, return_url='payment_done', cancel_url='index',
         #: TODO: define more variables: https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_html_Appx_websitestandard_htmlvariables#id08A6HI0709B
         
         return form.sandbox() if getattr(settings, 'PAYPAL_TEST', False) else form.render()
+    else:
+        return ''
 paypal_shortcut = function(paypal_shortcut, takes_request=True)
